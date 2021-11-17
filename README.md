@@ -1,4 +1,4 @@
-- 👋 Hi, I’m David I am currently a Moderator/Support with Contender 
+- 👋 Hi, I’m David I am currently a Moderator and Support for Contender 
 for the Vics Modern Warfare Mod and Contagion (https://www.mwcontagion.com)
 - 👀 I’m interested in Server Development and Networks
 - 🌱 I’m currently learning anything i can.
