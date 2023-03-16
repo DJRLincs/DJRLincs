@@ -1,6 +1,6 @@
 ![](./profile-3d-contrib/profile-night-view.svg)
 # Hi, I'm David 👋
-[![LinkedIn Profile](https://img.shields.io/badge/-DavidRoseLincs-blue?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/davidroselincs)](https://linkedin.com/in/davidroselincs)
+[![LinkedIn Profile](https://img.shields.io/badge/-DJRLincs-blue?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/davidroselincs)](https://linkedin.com/in/davidroselincs)
 [![Twitter Badge](https://img.shields.io/badge/-@kingflashrose-1ca0f1?style=flat&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/kingflashrose                  )](https://twitter.com/kingflashrose)
 
 - I am currently a Moderator and Support for Contender 
