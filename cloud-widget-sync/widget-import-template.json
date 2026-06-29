@@ -1,0 +1,133 @@
+{
+  "_type": "discord-widget",
+  "version": 1,
+  "display_name": "Dev Rig + GitHub",
+  "surfaces": {
+    "widget_top": {
+      "layout": "widget_top_hero",
+      "components": {
+        "hero_image": {
+          "fields": {
+            "image": {
+              "presentation_type": "image",
+              "value_type": "data",
+              "value": "gh_avatar_url"
+            }
+          }
+        },
+        "title": {
+          "fields": {
+            "text": {
+              "presentation_type": "text",
+              "value_type": "custom_string",
+              "value": "Dev Rig + GitHub"
+            }
+          }
+        }
+      }
+    },
+    "widget_bottom": {
+      "layout": "widget_bottom_stats",
+      "components": {
+        "stat_1": {
+          "fields": {
+            "value": {
+              "presentation_type": "text",
+              "value_type": "data",
+              "value": "rig_cpu"
+            },
+            "label": {
+              "presentation_type": "text",
+              "value_type": "custom_string",
+              "value": "CPU"
+            }
+          }
+        },
+        "stat_2": {
+          "fields": {
+            "value": {
+              "presentation_type": "text",
+              "value_type": "data",
+              "value": "rig_gpu"
+            },
+            "label": {
+              "presentation_type": "text",
+              "value_type": "custom_string",
+              "value": "GPU"
+            }
+          }
+        },
+        "stat_3": {
+          "fields": {
+            "value": {
+              "presentation_type": "text",
+              "value_type": "data",
+              "value": "rig_ram"
+            },
+            "label": {
+              "presentation_type": "text",
+              "value_type": "custom_string",
+              "value": "RAM"
+            }
+          }
+        },
+        "stat_4": {
+          "fields": {
+            "value": {
+              "presentation_type": "text",
+              "value_type": "data",
+              "value": "gh_contributions_year"
+            },
+            "label": {
+              "presentation_type": "text",
+              "value_type": "custom_string",
+              "value": "Contributions"
+            }
+          }
+        },
+        "stat_5": {
+          "fields": {
+            "value": {
+              "presentation_type": "text",
+              "value_type": "data",
+              "value": "gh_total_repos"
+            },
+            "label": {
+              "presentation_type": "text",
+              "value_type": "custom_string",
+              "value": "Total Repos"
+            }
+          }
+        },
+        "stat_6": {
+          "fields": {
+            "value": {
+              "presentation_type": "text",
+              "value_type": "data",
+              "value": "last_sync"
+            },
+            "label": {
+              "presentation_type": "text",
+              "value_type": "custom_string",
+              "value": "Last Sync"
+            }
+          }
+        }
+      }
+    },
+    "add_widget_preview": {
+      "layout": "add_widget_preview_hero",
+      "components": {
+        "hero_image": {
+          "fields": {
+            "image": {
+              "presentation_type": "image",
+              "value_type": "data",
+              "value": "gh_avatar_url"
+            }
+          }
+        }
+      }
+    }
+  }
+}

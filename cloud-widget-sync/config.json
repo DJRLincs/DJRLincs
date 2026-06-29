@@ -1,0 +1,26 @@
+{
+  "discord": {
+    "app_id": "REPLACE_WITH_DISCORD_APP_ID",
+    "user_id": "REPLACE_WITH_DISCORD_USER_ID",
+    "bot_token_env": "DISCORD_BOT_TOKEN",
+    "identity_id": 0
+  },
+  "github": {
+    "username": "DJRLincs",
+    "token_env": "GH_PAT",
+    "repos_mode": "user",
+    "tracked_repositories": [
+      "DJRLincs/SC-DisplayInfo-Reader",
+      "DJRLincs/SC-EAC-Screenshot-SplashScreen"
+    ]
+  },
+  "rig_snapshot": {
+    "cpu": "AMD Ryzen 7 9800X3D",
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "ram": "32 GB"
+  },
+  "widget": {
+    "username": "Dev Rig Snapshot",
+    "sync_timezone_label": "UTC"
+  }
+}
