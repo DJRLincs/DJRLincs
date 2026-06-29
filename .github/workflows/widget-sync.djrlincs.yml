@@ -27,12 +27,16 @@ jobs:
 
       - name: Validate required config file exists
         run: |
-          test -f cloud-widget-sync/config.json
+          test -f cloud-widget-sync/config.public.json
 
       - name: Run widget sync
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
           GITHUB_TOKEN: ${{ github.token }}
+          DISCORD_APP_ID: ${{ secrets.DISCORD_APP_ID }}
+          DISCORD_USER_ID: ${{ secrets.DISCORD_USER_ID }}
+          GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+          CONFIG_PATH: config.public.json
         run: |
           python cloud-widget-sync/sync_github_widget.py
