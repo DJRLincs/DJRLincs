@@ -6,7 +6,7 @@ on:
     - cron: "*/30 * * * *"
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: discord-widget-sync
@@ -25,9 +25,32 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pillow
+
       - name: Validate required config file exists
         run: |
           test -f cloud-widget-sync/config.public.json
+
+      - name: Generate fixed widget avatar
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+          CONFIG_PATH: config.public.json
+        run: |
+          python cloud-widget-sync/prepare_widget_avatar.py
+
+      - name: Commit updated avatar asset
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add cloud-widget-sync/generated/github-avatar-fixed.png
+          git diff --cached --quiet && exit 0
+          git commit -m "Update widget avatar"
+          git push
 
       - name: Run widget sync
         env:
@@ -38,5 +61,6 @@ jobs:
           DISCORD_USER_ID: ${{ secrets.DISCORD_USER_ID }}
           GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
           CONFIG_PATH: config.public.json
+          FIXED_AVATAR_URL: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/cloud-widget-sync/generated/github-avatar-fixed.png
         run: |
           python cloud-widget-sync/sync_github_widget.py
