@@ -127,8 +127,8 @@ def build_payload(config: dict, contributions: int, total_repos: int, avatar_url
         {"type": 1, "name": "rig_cpu", "value": rig["cpu"]},
         {"type": 1, "name": "rig_gpu", "value": rig["gpu"]},
         {"type": 1, "name": "rig_ram", "value": rig["ram"]},
-        {"type": 2, "name": "gh_contributions_year", "value": contributions},
-        {"type": 2, "name": "gh_total_repos", "value": total_repos},
+        {"type": 1, "name": "gh_contributions_year", "value": str(contributions)},
+        {"type": 1, "name": "gh_total_repos", "value": str(total_repos)},
         {"type": 1, "name": "last_sync", "value": last_sync},
     ]
 
