@@ -1,7 +1,7 @@
 {
   "discord": {
-    "app_id": "REPLACE_WITH_DISCORD_APP_ID",
-    "user_id": "REPLACE_WITH_DISCORD_USER_ID",
+    "app_id": "",
+    "user_id": "",
     "bot_token_env": "DISCORD_BOT_TOKEN",
     "identity_id": 0
   },
@@ -11,13 +11,20 @@
     "repos_mode": "user",
     "tracked_repositories": [
       "DJRLincs/SC-DisplayInfo-Reader",
-      "DJRLincs/SC-EAC-Screenshot-SplashScreen"
+      "DJRLincs/SC-EAC-Screenshot-SplashScreen",
+      "AlexFlipnote/steelseries_chatmix_fix"
     ]
   },
   "rig_snapshot": {
     "cpu": "AMD Ryzen 7 9800X3D",
     "gpu": "NVIDIA GeForce RTX 3060",
     "ram": "32 GB"
+  },
+  "avatar_processing": {
+    "output_path": "generated/github-avatar-fixed.png",
+    "size": 512,
+    "top_strip": 17,
+    "top_right_radius": 36
   },
   "widget": {
     "username": "Dev Rig Snapshot",
