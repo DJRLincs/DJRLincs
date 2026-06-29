@@ -76,32 +76,50 @@ def github_rest_get_user_profile(username: str, token: str) -> dict:
     return body
 
 
-def fetch_contributions_this_year(username: str, token: str) -> int:
-    now = dt.datetime.now(dt.timezone.utc)
-    year_start = dt.datetime(now.year, 1, 1, 0, 0, 0, tzinfo=dt.timezone.utc)
-
-    query = """
-    query($login: String!, $from: DateTime!, $to: DateTime!) {
-      user(login: $login) {
-        contributionsCollection(from: $from, to: $to) {
-          contributionCalendar {
-            totalContributions
-          }
+def fetch_contributions_lifetime(username: str, token: str) -> int:
+        years_query = """
+        query($login: String!) {
+            user(login: $login) {
+                contributionsCollection {
+                    contributionYears
+                }
+            }
         }
-      }
-    }
-    """
+        """
 
-    data = github_graphql(
-        token,
-        query,
-        {
-            "login": username,
-            "from": year_start.isoformat().replace("+00:00", "Z"),
-            "to": now.isoformat().replace("+00:00", "Z"),
-        },
-    )
-    return int(data["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"])
+        data = github_graphql(token, years_query, {"login": username})
+        years = data["user"]["contributionsCollection"].get("contributionYears") or []
+        if not years:
+                return 0
+
+        total = 0
+        year_query = """
+        query($login: String!, $from: DateTime!, $to: DateTime!) {
+            user(login: $login) {
+                contributionsCollection(from: $from, to: $to) {
+                    contributionCalendar {
+                        totalContributions
+                    }
+                }
+            }
+        }
+        """
+
+        for year in years:
+                from_dt = dt.datetime(int(year), 1, 1, 0, 0, 0, tzinfo=dt.timezone.utc)
+                to_dt = dt.datetime(int(year), 12, 31, 23, 59, 59, tzinfo=dt.timezone.utc)
+                year_data = github_graphql(
+                        token,
+                        year_query,
+                        {
+                                "login": username,
+                                "from": from_dt.isoformat().replace("+00:00", "Z"),
+                                "to": to_dt.isoformat().replace("+00:00", "Z"),
+                        },
+                )
+                total += int(year_data["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"])
+
+        return total
 
 
 def resolve_total_repos(config: dict, token: str) -> int:
@@ -215,7 +233,7 @@ def main() -> int:
     if not avatar_url:
         raise RuntimeError("GitHub profile avatar_url was empty")
 
-    contributions = fetch_contributions_this_year(username, gh_token)
+    contributions = fetch_contributions_lifetime(username, gh_token)
     total_repos = resolve_total_repos(config, gh_token)
 
     payload = build_payload(config, contributions, total_repos, avatar_url)
